@@ -1,0 +1,9 @@
+# Конфигурация Supabase CLI для этого проекта.
+#
+# Функцию telegram-login вызывает браузер прямым fetch() — без сессии
+# Supabase и без apikey-заголовка, поэтому стандартная проверка JWT на входе
+# в функцию должна быть отключена. Проверка подлинности здесь устроена
+# по-другому: через HMAC-подпись самого Telegram (см. комментарии в
+# supabase/functions/telegram-login/index.ts).
+[functions.telegram-login]
+verify_jwt = false

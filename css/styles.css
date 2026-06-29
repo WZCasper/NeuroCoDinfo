@@ -1,0 +1,827 @@
+/* ============================================================
+   NeuroCoDinfo — токены дизайна
+   ============================================================ */
+:root {
+  --bg: #0a0a0b;
+  --panel: #141415;
+  --panel-raised: #1c1c1e;
+  --line: #28282b;
+  --yellow: #ffc400;
+  --yellow-dim: #8a6c12;
+  --red: #e2493f;
+  --text: #f2f1ec;
+  --text-dim: #9c9b95;
+  --text-faint: #6b6a65;
+
+  --font-display: 'Rajdhani', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 8px;
+  --container-width: 880px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button, input, textarea {
+  font-family: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ============================================================
+   Шапка
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+}
+
+.header-inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--yellow);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+
+.main-nav {
+  display: flex;
+  gap: 18px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  white-space: nowrap;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link.is-active {
+  color: var(--yellow);
+  border-bottom-color: var(--yellow);
+}
+
+.nav-link:hover { color: var(--text); }
+
+.auth-area, .back-link, .profile-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.auth-pending {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.auth-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.auth-avatar-fallback {
+  background: var(--yellow);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.auth-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text);
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.back-link, .profile-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+}
+
+.back-link:hover, .profile-link:hover { color: var(--yellow); }
+
+.hazard-divider {
+  height: 5px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--yellow) 0 10px,
+    var(--bg) 10px 20px
+  );
+  opacity: 0.85;
+}
+
+/* ============================================================
+   Контейнеры
+   ============================================================ */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 24px 20px 12px;
+}
+
+.container-narrow {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 28px 20px 12px;
+}
+
+/* ============================================================
+   Демо-баннер
+   ============================================================ */
+.demo-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--panel);
+  border: 0.5px solid var(--line);
+  border-left: 3px solid var(--yellow);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin-bottom: 22px;
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+
+.demo-banner button {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.demo-banner button:hover { color: var(--text); }
+
+/* ============================================================
+   Закреплённые новости
+   ============================================================ */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin: 0 0 12px;
+}
+
+.eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--yellow);
+  display: inline-block;
+}
+
+.pinned-section { margin-bottom: 32px; }
+
+.pinned-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.pinned-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--panel);
+  border: 0.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px 16px;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.pinned-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  border-top: 1.5px solid transparent;
+  border-right: 1.5px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.pinned-card:hover::before {
+  border-color: var(--yellow);
+}
+
+.pinned-card:hover { border-color: var(--yellow-dim); }
+
+.pinned-category {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--yellow-dim);
+}
+
+.pinned-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.pinned-time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* ============================================================
+   Лента / карточки статей
+   ============================================================ */
+.feed-list { display: flex; flex-direction: column; gap: 14px; }
+
+.article-card, .post-article {
+  background: var(--panel);
+  border: 0.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+
+.card-meta, .post-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+}
+
+.card-category {
+  color: var(--yellow-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-dot { color: var(--line); }
+
+.card-source { color: var(--text-dim); }
+
+a.card-source:hover { color: var(--yellow); }
+
+.translated-tag {
+  border: 0.5px solid var(--line);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: var(--text-dim);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 1.3;
+  margin: 0 0 8px;
+}
+
+.card-title a:hover { color: var(--yellow); }
+
+.card-excerpt {
+  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+/* ============================================================
+   Ряд действий (лайк/дизлайк/комментарии/поделиться/копировать)
+   ============================================================ */
+.action-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 0.5px solid var(--line);
+  margin-top: 4px;
+  padding-top: 12px;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  cursor: pointer;
+  padding: 4px 2px;
+}
+
+.action-btn:hover { color: var(--text); }
+
+.action-btn.like-btn.is-active { color: var(--yellow); }
+.action-btn.dislike-btn.is-active { color: var(--red); }
+
+.action-btn.icon-only .count { display: none; }
+
+.action-spacer { flex: 1; }
+
+.text-btn {
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  font-size: 12.5px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.text-btn:hover { color: var(--yellow); }
+
+.empty-state {
+  color: var(--text-faint);
+  font-size: 13.5px;
+  padding: 20px 0;
+}
+
+/* ============================================================
+   Кнопки
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--yellow);
+  color: var(--bg);
+  border: none;
+  border-radius: 6px;
+  padding: 9px 18px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary:hover { background: #ffd84d; }
+
+.btn-secondary {
+  background: var(--panel-raised);
+  color: var(--text);
+  border: 0.5px solid var(--line);
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-secondary:hover { border-color: var(--yellow-dim); }
+
+/* ============================================================
+   Баннер с ботом
+   ============================================================ */
+.bot-cta {
+  max-width: var(--container-width);
+  margin: 12px auto 32px;
+  padding: 0 20px;
+}
+
+.bot-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: var(--panel);
+  border: 0.5px solid var(--yellow-dim);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+
+.bot-cta-inner p { margin: 0; font-size: 14px; color: var(--text-dim); }
+.bot-cta-inner strong { color: var(--text); }
+
+/* ============================================================
+   Подвал
+   ============================================================ */
+.site-footer {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 20px 20px 40px;
+  font-size: 12px;
+  color: var(--text-faint);
+  text-align: center;
+}
+
+/* ============================================================
+   Страница статьи
+   ============================================================ */
+.post-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+
+.post-body { color: var(--text); font-size: 15.5px; line-height: 1.75; }
+.post-body p { margin: 0 0 14px; }
+
+/* ============================================================
+   Комментарии
+   ============================================================ */
+.comments-section { margin-top: 28px; }
+
+.comments-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 16px;
+}
+
+.comment-composer, .reply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--panel);
+  border: 0.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 20px;
+}
+
+.comment-composer input,
+.comment-composer textarea,
+.reply-form textarea {
+  background: var(--panel-raised);
+  border: 0.5px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 11px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.comment-composer input::placeholder,
+.comment-composer textarea::placeholder,
+.reply-form textarea::placeholder {
+  color: var(--text-faint);
+}
+
+.comment-composer .btn-primary { align-self: flex-end; }
+
+.form-row { display: flex; align-items: center; gap: 14px; }
+
+.comment-list { display: flex; flex-direction: column; gap: 4px; }
+
+.comment {
+  padding: 14px 0;
+  border-top: 0.5px solid var(--line);
+}
+
+.comment:first-child { border-top: none; }
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 6px;
+}
+
+.comment-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--panel-raised);
+  border: 0.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--yellow);
+  flex-shrink: 0;
+}
+
+.comment-author {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+.comment-time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.comment-body {
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0 0 8px;
+  padding-left: 35px;
+}
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 35px;
+}
+
+.reply-form-slot:empty { display: none; }
+.reply-form-slot { padding-left: 35px; margin-top: 10px; }
+.reply-form-slot .reply-form { margin-bottom: 0; }
+
+.comment-replies {
+  padding-left: 35px;
+  border-left: 1px solid var(--line);
+  margin-left: 13px;
+}
+
+.comment-replies:empty { border-left: none; margin-left: 0; padding-left: 0; }
+.comment-replies .comment { padding-left: 0; }
+
+/* ============================================================
+   Тосты
+   ============================================================ */
+.toast-root {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast {
+  background: var(--panel-raised);
+  border: 0.5px solid var(--yellow-dim);
+  color: var(--text);
+  font-size: 13px;
+  padding: 9px 16px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.toast.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   Адаптивность
+   ============================================================ */
+/* ============================================================
+   Анкета и карточка профиля игрока
+   ============================================================ */
+.page-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0 0 18px;
+}
+
+.profile-card {
+  background: var(--panel);
+  border: 0.5px solid var(--yellow-dim);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 22px;
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.profile-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--yellow);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.profile-avatar-photo {
+  object-fit: cover;
+  background: var(--panel-raised);
+}
+
+.profile-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.profile-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--yellow-dim);
+}
+
+.profile-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.tag-chip {
+  border: 0.5px solid var(--line);
+  border-radius: 5px;
+  padding: 3px 9px;
+  font-size: 12px;
+  color: var(--text-dim);
+  background: var(--panel-raised);
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.field input[type="text"],
+.field input[type="date"],
+.field select {
+  background: var(--panel);
+  border: 0.5px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 11px;
+  font-size: 14px;
+}
+
+.field-hint {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.field-group {
+  border: 0.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field-group legend {
+  padding: 0 4px;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+@media (max-width: 720px) {
+  .header-inner { flex-wrap: wrap; gap: 12px; }
+  .main-nav { order: 3; width: 100%; gap: 14px; }
+  .pinned-grid { grid-template-columns: 1fr; }
+  .post-title { font-size: 23px; }
+  .action-row { gap: 12px; }
+  .profile-meta-row { gap: 6px 12px; }
+}

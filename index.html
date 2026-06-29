@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>NeuroCoDinfo — новости Call of Duty на русском</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Новости Call of Duty и Activision на русском языке: патчноуты, утечки, эспорт и скидки в одном месте.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">N</span>
+      <span class="logo-text">NeuroCoDinfo</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Категории новостей">
+      <a href="#" data-filter="all" class="nav-link is-active">Все</a>
+      <a href="#" data-filter="Новости" class="nav-link">Новости</a>
+      <a href="#" data-filter="Патчноуты" class="nav-link">Патчи</a>
+      <a href="#" data-filter="Утечки" class="nav-link">Утечки</a>
+      <a href="#" data-filter="Эспорт" class="nav-link">Эспорт</a>
+      <a href="#" data-filter="Скидки" class="nav-link">Скидки</a>
+    </nav>
+
+    <div class="auth-area" id="auth-area" aria-label="Вход через Telegram"></div>
+    <a class="profile-link" href="profile.html">Профиль</a>
+  </div>
+  <div class="hazard-divider" role="presentation"></div>
+</header>
+
+<main class="container">
+  <div class="demo-banner" id="demo-banner">
+    <span>Демо-режим: статьи ниже — тестовые данные для разработки. Лайки и комментарии сохраняются только в этом браузере, пока не подключён общий backend.</span>
+    <button id="demo-banner-close" aria-label="Скрыть уведомление">×</button>
+  </div>
+
+  <section class="pinned-section" aria-label="Закреплённые новости">
+    <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Закреплено</p>
+    <div class="pinned-grid" id="pinned-grid"></div>
+  </section>
+
+  <section class="feed-section" aria-label="Лента новостей">
+    <div class="feed-list" id="feed-list"></div>
+  </section>
+</main>
+
+<section class="bot-cta">
+  <div class="bot-cta-inner">
+    <p><strong>Добавьте нашего новостного бота</strong> в свою Telegram-группу или канал — бесплатно, без рекламы.<br>
+    <span class="field-hint">После добавления сделайте бота администратором с правом публикации сообщений — иначе он не сможет постить новости.</span></p>
+    <a class="btn-primary" id="bot-add-link" href="#" target="_blank" rel="noopener">Подключить бота</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>NeuroCoDinfo — неофициальный фан-проект о Call of Duty. Не связан с Activision Blizzard.</p>
+</footer>
+
+<script src="js/icons.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/store.js"></script>
+<script src="js/common.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

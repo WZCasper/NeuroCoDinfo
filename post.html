@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Статья — NeuroCoDinfo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">N</span>
+      <span class="logo-text">NeuroCoDinfo</span>
+    </a>
+    <a class="back-link" href="index.html">← Все новости</a>
+    <div class="auth-area" id="auth-area" aria-label="Вход через Telegram"></div>
+    <a class="profile-link" href="profile.html">Профиль</a>
+  </div>
+  <div class="hazard-divider" role="presentation"></div>
+</header>
+
+<main class="container container-narrow">
+  <article id="article-root" class="post-article"></article>
+
+  <section class="comments-section" id="comments">
+    <h2 class="comments-heading">Комментарии</h2>
+
+    <form class="comment-composer" id="comment-composer">
+      <input type="text" name="author" placeholder="Ваше имя (необязательно)" maxlength="40">
+      <textarea name="text" required placeholder="Что вы думаете об этой новости?" rows="3"></textarea>
+      <button type="submit" class="btn-primary">Опубликовать</button>
+    </form>
+
+    <div class="comment-list" id="comment-list"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>NeuroCoDinfo — неофициальный фан-проект о Call of Duty. Не связан с Activision Blizzard.</p>
+</footer>
+
+<script src="js/icons.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/store.js"></script>
+<script src="js/common.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/post.js"></script>
+</body>
+</html>

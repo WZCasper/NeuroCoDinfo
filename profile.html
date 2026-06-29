@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Анкета игрока — NeuroCoDinfo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">N</span>
+      <span class="logo-text">NeuroCoDinfo</span>
+    </a>
+    <a class="back-link" href="index.html">← Все новости</a>
+    <div class="auth-area" id="auth-area" aria-label="Вход через Telegram"></div>
+  </div>
+  <div class="hazard-divider" role="presentation"></div>
+</header>
+
+<main class="container container-narrow">
+  <div class="demo-banner">
+    <span>Демо-режим: анкета сохраняется только в этом браузере. После подключения backend (Этап 3) и входа через соцсети (Этап 4) она привяжется к вашему аккаунту.</span>
+  </div>
+
+  <section id="profile-card-slot"></section>
+
+  <form class="profile-form" id="profile-form">
+    <h1 class="page-title">Анкета игрока</h1>
+
+    <label class="field">
+      <span class="field-label">Имя</span>
+      <input type="text" name="name" maxlength="40" placeholder="Как вас называть">
+    </label>
+
+    <label class="field">
+      <span class="field-label">Activision ID</span>
+      <input type="text" name="activisionId" maxlength="40" placeholder="Например, Player#1234567">
+      <span class="field-hint">Вводится вручную — у Activision нет публичного входа для сторонних сайтов, поэтому проверить тег автоматически невозможно. Подробнее — в README проекта.</span>
+    </label>
+
+    <label class="field">
+      <span class="field-label">Страна</span>
+      <select name="country" id="country-select"></select>
+      <input type="text" name="countryOther" id="country-other" placeholder="Укажите страну" hidden>
+    </label>
+
+    <label class="field">
+      <span class="field-label">Дата начала игры в Call of Duty</span>
+      <input type="date" name="startDate">
+    </label>
+
+    <fieldset class="field-group">
+      <legend class="field-label">Любимые игровые режимы</legend>
+      <label class="check-row"><input type="checkbox" name="favoriteModes" value="Мультиплеер"> Мультиплеер</label>
+      <label class="check-row"><input type="checkbox" name="favoriteModes" value="Zombies"> Zombies</label>
+      <label class="check-row"><input type="checkbox" name="favoriteModes" value="Warzone (Battle Royale)"> Warzone (Battle Royale)</label>
+      <label class="check-row"><input type="checkbox" name="favoriteModes" value="Ranked Play"> Ranked Play</label>
+      <label class="check-row"><input type="checkbox" name="favoriteModes" value="Кампания"> Кампания</label>
+      <label class="check-row"><input type="checkbox" name="favoriteModes" value="Call of Duty Mobile"> Call of Duty Mobile</label>
+    </fieldset>
+
+    <fieldset class="field-group">
+      <legend class="field-label">Игровая платформа</legend>
+      <label class="check-row"><input type="radio" name="platform" value="ПК"> ПК</label>
+      <label class="check-row"><input type="radio" name="platform" value="Xbox-приложение"> Xbox-приложение</label>
+      <label class="check-row"><input type="radio" name="platform" value="PlayStation"> PlayStation</label>
+      <label class="check-row"><input type="radio" name="platform" value="Xbox"> Xbox</label>
+      <label class="check-row"><input type="radio" name="platform" value="Battle.net"> Battle.net</label>
+    </fieldset>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary">Сохранить анкету</button>
+      <button type="button" class="text-btn" id="profile-clear">Очистить анкету</button>
+    </div>
+  </form>
+</main>
+
+<footer class="site-footer">
+  <p>NeuroCoDinfo — неофициальный фан-проект о Call of Duty. Не связан с Activision Blizzard.</p>
+</footer>
+
+<script src="js/toast.js"></script>
+<script src="js/config.js"></script>
+<script src="js/store.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

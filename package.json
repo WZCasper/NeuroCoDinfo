@@ -1,0 +1,13 @@
+{
+  "name": "neurocodinfo",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Новостной сайт о Call of Duty на русском языке",
+  "scripts": {
+    "fetch-news": "node scripts/fetch-news.mjs"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}
