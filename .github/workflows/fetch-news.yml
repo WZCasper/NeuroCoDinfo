@@ -1,0 +1,43 @@
+name: Сбор и перевод новостей
+
+on:
+  schedule:
+    # каждые 3 часа. Синтаксис cron — в UTC.
+    - cron: '0 */3 * * *'
+  workflow_dispatch: {}
+    # ^ позволяет запустить вручную: вкладка Actions → Сбор и перевод новостей → Run workflow
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Установка зависимостей
+        run: npm install
+
+      - name: Сбор и перевод новостей
+        env:
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+        run: node scripts/fetch-news.mjs
+
+      - name: Коммит изменений, если появились новые статьи
+        run: |
+          git config user.name "neurocodinfo-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/posts.json
+          if git diff --cached --quiet; then
+            echo "Изменений нет, коммит не нужен"
+          else
+            git commit -m "Автообновление новостей"
+            git push
+          fi
