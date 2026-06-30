@@ -1,0 +1,42 @@
+name: Рассылка новостей в Telegram
+
+on:
+  schedule:
+    # каждые 15 минут. Синтаксис cron — в UTC. GitHub может слегка задерживать
+    # запуск в моменты высокой нагрузки на бесплатном тарифе — это нормально.
+    - cron: '*/15 * * * *'
+  workflow_dispatch: {}
+    # ^ позволяет запустить вручную: вкладка Actions → Рассылка новостей в Telegram → Run workflow
+
+permissions:
+  contents: write
+
+jobs:
+  broadcast:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Обнаружение чатов и рассылка новостей
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: node scripts/telegram-bot.mjs
+
+      - name: Коммит обновлённого состояния бота
+        run: |
+          git config user.name "neurocodinfo-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/telegram-state.json
+          if git diff --cached --quiet; then
+            echo "Изменений нет"
+          else
+            git commit -m "Обновление состояния Telegram-бота"
+            git push
+          fi
