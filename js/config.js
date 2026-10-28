@@ -23,5 +23,5 @@ const SITE_CONFIG = {
   // «publishable key», в зависимости от того, какой формат у вашего проекта).
   // Пока здесь стоят заглушки — сайт работает в локальном демо-режиме (localStorage).
   supabaseUrl: 'https://ВАШ_ПРОЕКТ.supabase.co',
-  supabaseAnonKey: 'ВАШ_ANON_ИЛИ_PUBLISHABLE_KEY'
+  supabaseAnonKey: 'sb_publishable_f2rqto6oH187C3G-aiGTCg_6o925cIb'
 };
