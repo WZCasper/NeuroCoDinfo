@@ -41,15 +41,47 @@ const POSTS_PATH = path.join(__dirname, '..', 'data', 'posts.json');
 const BLOG_INDEX_URL = 'https://www.callofduty.com/blog';
 const MAX_NEW_PER_RUN = 8;
 const REQUEST_DELAY_MS = 600;
-const USER_AGENT = 'NeuroCoDinfoBot/1.0 (+https://github.com/; новостной агрегатор-переводчик)';
+// ВАЖНО: значение HTTP-заголовка должно состоять только из ASCII-символов
+// (код ≤ 255) — это требование самой спецификации HTTP, а не особенность
+// Node.js. Раньше здесь стояла кириллица ("новостной агрегатор-переводчик"),
+// и это валилось с ошибкой уже на этапе формирования запроса, до любого
+// обращения к сети:
+//   TypeError: Cannot convert argument to a ByteString because the
+//   character at index 43 has a value of 1085 which is greater than 255.
+// (1085 — код буквы "н"). Судя по датам в истории GitHub Actions, раньше
+// такая строка почему-то проходила — вероятно, более старая версия
+// используемого в раннерах Node.js была к этому менее строга, а после
+// обновления образа раннера (GitHub Actions форсирует переход на более
+// новые версии Node) проверка стала строгой, и пайплайн начал падать на
+// каждом запуске. Сам факт ошибки был виден в логе только после того, как
+// в fetchHtml() добавили вывод текста ответа сервера при сбое — здесь же
+// сбой происходил ДО сетевого запроса, поэтому даже это дополнительное
+// логирование не сработало бы — ошибка бросается раньше, чем выполняется
+// сам fetch(). Текст ниже — тот же смысл, но только латиницей.
+const USER_AGENT = 'NeuroCoDinfoBot/1.0 (+https://github.com/; news aggregator and translator bot)';
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// Раньше при сбое здесь сообщение об ошибке содержало только код статуса
+// (например, "HTTP 403 при загрузке ..."), и это давало слишком мало
+// контекста в логах GitHub Actions — было видно только "Process completed
+// with exit code 1", без понимания, что именно пошло не так на стороне
+// callofduty.com. Теперь в сообщение добавлены res.statusText и начало
+// текста ответа сервера (часто содержит понятную причину — "Forbidden",
+// "Too Many Requests", разметку страницы с капчей и т.п.) — это не меняет
+// поведение скрипта (при ошибке он всё так же завершается с кодом 1,
+// оставляя posts.json нетронутым), только делает причину видимой в логе.
 async function fetchHtml(url) {
   const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
-  if (!res.ok) throw new Error(`HTTP ${res.status} при загрузке ${url}`);
+  if (!res.ok) {
+    const bodyPreview = await res.text().catch(() => '');
+    throw new Error(
+      `HTTP ${res.status} ${res.statusText} при загрузке ${url}` +
+      (bodyPreview ? ` — начало ответа сервера: ${bodyPreview.slice(0, 200).replace(/\s+/g, ' ')}` : '')
+    );
+  }
   return res.text();
 }
 
