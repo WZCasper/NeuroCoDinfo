@@ -41,6 +41,22 @@ const POSTS_PATH = path.join(__dirname, '..', 'data', 'posts.json');
 const BLOG_INDEX_URL = 'https://www.callofduty.com/blog';
 const MAX_NEW_PER_RUN = 8;
 const REQUEST_DELAY_MS = 600;
+// Раньше запрос ничем не ограничивался по времени, и Node.js (точнее, его
+// встроенный HTTP-клиент undici) ждал ответа ровно 5 минут (300 секунд —
+// это задокументированное дефолтное значение headersTimeout в undici)
+// прежде чем сам оборвать соединение с ошибкой UND_ERR_HEADERS_TIMEOUT.
+// На практике это проявилось так: callofduty.com иногда отвечает на запрос
+// от этого бота крайне медленно или вовсе "подвешивает" соединение, не
+// отклоняя его явно кодом вроде 403 — это распространённый приём защиты от
+// автоматических обращений, из-за которого проблема маскируется под обычный
+// сетевой сбой. Пять минут ожидания одного запроса — неприемлемо долго для
+// пайплайна, который должен выполняться за секунды. Таймаут ниже сокращает
+// ожидание до разумного предела, а REQUEST_RETRIES даёт ещё несколько
+// попыток с паузой: если сайт подвис лишь временно, повтор может пройти
+// успешно без вмешательства человека.
+const REQUEST_TIMEOUT_MS = 20_000;
+const REQUEST_RETRIES = 3;
+const RETRY_DELAY_MS = 3_000;
 // ВАЖНО: значение HTTP-заголовка должно состоять только из ASCII-символов
 // (код ≤ 255) — это требование самой спецификации HTTP, а не особенность
 // Node.js. Раньше здесь стояла кириллица ("новостной агрегатор-переводчик"),
@@ -73,16 +89,64 @@ function sleep(ms) {
 // "Too Many Requests", разметку страницы с капчей и т.п.) — это не меняет
 // поведение скрипта (при ошибке он всё так же завершается с кодом 1,
 // оставляя posts.json нетронутым), только делает причину видимой в логе.
+// ПОЧЕМУ ЗДЕСЬ ДВА РАЗНЫХ СЦЕНАРИЯ НЕУДАЧИ, И ПОЧЕМУ ОНИ ОБРАБОТАНЫ ПО-РАЗНОМУ:
+//
+// 1. Сервер ОТВЕТИЛ, но кодом ошибки (res.ok === false — 403, 429, 500...).
+//    Повторять такой запрос несколько раз подряд обычно бессмысленно: если
+//    сайт блокирует запрос по User-Agent или превышен лимит частоты, второй
+//    и третий запрос почти наверняка получат тот же ответ. Поэтому здесь
+//    попытки НЕ повторяются — ошибка бросается сразу, с диагностикой
+//    (res.statusText и начало тела ответа), как было раньше.
+//
+// 2. Сервер НЕ ОТВЕТИЛ вовсе — fetch() сам бросил исключение: таймаут
+//    (AbortError, когда сработал наш REQUEST_TIMEOUT_MS) или сетевой сбой
+//    (TypeError: fetch failed, в том числе из-за UND_ERR_HEADERS_TIMEOUT —
+//    именно это увидено в реальном логе: сервер callofduty.com иногда не
+//    присылает заголовки ответа вовремя, и соединение зависает). Такая
+//    проблема часто временная, поэтому здесь попытки ПОВТОРЯЮТСЯ до
+//    REQUEST_RETRIES раз с паузой RETRY_DELAY_MS между ними.
 async function fetchHtml(url) {
-  const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
-  if (!res.ok) {
-    const bodyPreview = await res.text().catch(() => '');
-    throw new Error(
-      `HTTP ${res.status} ${res.statusText} при загрузке ${url}` +
-      (bodyPreview ? ` — начало ответа сервера: ${bodyPreview.slice(0, 200).replace(/\s+/g, ' ')}` : '')
-    );
+  let lastNetworkError;
+
+  for (let attempt = 1; attempt <= REQUEST_RETRIES; attempt += 1) {
+    let res;
+    try {
+      res = await fetch(url, {
+        headers: { 'User-Agent': USER_AGENT },
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS)
+      });
+    } catch (networkErr) {
+      // Сюда попадают и таймаут (AbortSignal сработал раньше ответа), и
+      // настоящие сетевые сбои — fetch() в обоих случаях бросает исключение,
+      // не возвращая объект res. Различать их детальнее не нужно: в обоих
+      // случаях правильная реакция одна — подождать и попробовать снова.
+      lastNetworkError = networkErr;
+      console.warn(
+        `Попытка ${attempt}/${REQUEST_RETRIES}: не удалось получить ответ от ${url} ` +
+        `(${networkErr.message}).` +
+        (attempt < REQUEST_RETRIES ? ` Повтор через ${RETRY_DELAY_MS / 1000} с...` : '')
+      );
+      if (attempt < REQUEST_RETRIES) await sleep(RETRY_DELAY_MS);
+      continue;
+    }
+
+    if (!res.ok) {
+      const bodyPreview = await res.text().catch(() => '');
+      throw new Error(
+        `HTTP ${res.status} ${res.statusText} при загрузке ${url}` +
+        (bodyPreview ? ` — начало ответа сервера: ${bodyPreview.slice(0, 200).replace(/\s+/g, ' ')}` : '')
+      );
+    }
+    return res.text();
   }
-  return res.text();
+
+  // Все REQUEST_RETRIES попыток исчерпаны, и ни одна не дошла до ответа
+  // сервера — пробрасываем причину последней неудачи, чтобы в логе было
+  // видно именно то, что мешало (таймаут или конкретную сетевую ошибку),
+  // а не обезличенное "не удалось загрузить страницу".
+  throw new Error(
+    `Не удалось загрузить ${url} после ${REQUEST_RETRIES} попыток: ${lastNetworkError.message}`
+  );
 }
 
 // Категоризация по URL и ключевым словам в адресе статьи.
