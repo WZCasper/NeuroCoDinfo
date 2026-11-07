@@ -1,80 +1,153 @@
 [
   {
-    "id": "post-1",
-    "isDemo": true,
+    "id": "src-news-marvel-rivals-december-19-update-patch-notes-winter-celebration-new-mode-more-338003",
+    "isDemo": false,
     "pinned": true,
-    "category": "Патчноуты",
-    "title": "Демо: разбор обновления текущего сезона",
-    "excerpt": "Демо-материал для разработки. Здесь появится короткий перевод официального патчноута: что добавили, что изменили в балансе оружия и режимов.",
+    "category": "Новости",
+    "title": "Marvel Rivals December 19 update patch notes: Winter Celebration, new mode, more",
+    "excerpt": "Here’s a full rundown of everything you need to know about the December 19 patch update of  Marvel Rivals for all platforms.",
     "body": [
-      "Это демонстрационная статья-заглушка, а не реальная новость.",
-      "После настройки автоматического пайплайна (Этап 2) сюда будут попадать переведённые на русский язык новости с официального блога Call of Duty — с коротким изложением и ссылкой на первоисточник.",
-      "Карточка статьи, лайки, дизлайки, комментарии и кнопки «поделиться» уже полностью работают — но видны только вам, в этом браузере, пока не подключён общий backend (Этап 3)."
+      "Here’s a full rundown of everything you need to know about the December 19 patch update of  Marvel Rivals for all platforms.",
+      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
     ],
-    "source": { "name": "callofduty.com", "url": "https://www.callofduty.com/blog" },
-    "publishedAt": "2026-06-25T10:00:00Z",
+    "source": {
+      "name": "charlieintel.com",
+      "url": "https://www.charlieintel.com/news/marvel-rivals-december-19-update-patch-notes-winter-celebration-new-mode-more-338003/"
+    },
+    "publishedAt": "2024-12-19T09:33:12.000Z",
     "likes": 0,
     "dislikes": 0
   },
   {
-    "id": "post-2",
-    "isDemo": true,
+    "id": "src-news-marvel-rivals-december-10-update-patch-notes-hero-fixes-map-tweaks-more-337701",
+    "isDemo": false,
     "pinned": true,
-    "category": "Эспорт",
-    "title": "Демо: итоги турнирного дня в лиге Call of Duty",
-    "excerpt": "Демо-материал. Здесь будет короткий перевод официального отчёта о матчах с сайта Call of Duty League.",
+    "category": "Новости",
+    "title": "Marvel Rivals December 10 update patch notes: Hero fixes, map tweaks, more",
+    "excerpt": "Marvel Rivals December 10 patch update is finally here and brings several map tweaks, hero bugfixes, crash fixes, and a lot more.",
     "body": [
-      "Это демонстрационная статья-заглушка.",
-      "Раздел «Эспорт» пока не входит в автоматический пайплайн Этапа 2 — сайт Call of Duty League технически устроен так, что требует более сложного способа сбора данных. Подробности — в README."
+      "Marvel Rivals December 10 patch update is finally here and brings several map tweaks, hero bugfixes, crash fixes, and a lot more.",
+      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
     ],
-    "source": { "name": "callofdutyleague.com", "url": "https://callofdutyleague.com/en-us/news" },
-    "publishedAt": "2026-06-25T06:30:00Z",
+    "source": {
+      "name": "charlieintel.com",
+      "url": "https://www.charlieintel.com/news/marvel-rivals-december-10-update-patch-notes-hero-fixes-map-tweaks-more-337701/"
+    },
+    "publishedAt": "2024-12-10T09:41:01.000Z",
     "likes": 0,
     "dislikes": 0
   },
   {
-    "id": "post-3",
-    "isDemo": true,
+    "id": "src-news-the-first-descendant-1-05-update-patch-notes-new-character-luna-ultimate-valby-peace-maker-weapon-334416",
+    "isDemo": false,
     "pinned": true,
-    "category": "Скидки",
-    "title": "Демо: распродажа в магазине Call of Duty",
-    "excerpt": "Демо-материал. Здесь появится перевод анонса временной распродажи косметики и наборов.",
+    "category": "Новости",
+    "title": "The First Descendant 1.05 update patch notes – New character Luna, Ultimate Valby & Peace Maker weapon",
+    "excerpt": "Here are the full patch notes for The First Descendant 1.05 update, which brings the new character Luna and a fresh Ultimate weapon.",
     "body": [
-      "Это демонстрационная статья-заглушка для проверки вёрстки блока «Закреплено»."
+      "Here are the full patch notes for The First Descendant 1.05 update, which brings the new character Luna and a fresh Ultimate weapon.",
+      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
     ],
-    "source": { "name": "callofduty.com", "url": "https://www.callofduty.com" },
-    "publishedAt": "2026-06-24T18:00:00Z",
+    "source": {
+      "name": "charlieintel.com",
+      "url": "https://www.charlieintel.com/news/the-first-descendant-1-05-update-patch-notes-new-character-luna-ultimate-valby-peace-maker-weapon-334416/"
+    },
+    "publishedAt": "2024-07-31T08:31:07.000Z",
     "likes": 0,
     "dislikes": 0
   },
   {
-    "id": "post-4",
-    "isDemo": true,
+    "id": "src-news-is-lamine-yamal-in-ea-fc-24-329278",
+    "isDemo": false,
     "pinned": false,
-    "category": "Утечки",
-    "title": "Демо: неподтверждённая информация о будущем контенте",
-    "excerpt": "Демо-материал. Утечки всегда будут помечаться отдельной меткой достоверности, чтобы не путать слухи с официальными новостями.",
+    "category": "Новости",
+    "title": "Is Lamine Yamal in EA FC 24?",
+    "excerpt": "Here’s everything you need to know about whether Lamine Yamal is in EA FC 24, including Ultimate Team and Career Mode.",
     "body": [
-      "Это демонстрационная статья-заглушка.",
-      "Официальные источники по определению не публикуют утечки — этот раздел предназначен для будущего, отдельного источника (например, проверенных сообществом постов), который не входит в автоматический пайплайн Этапа 2."
+      "Here’s everything you need to know about whether Lamine Yamal is in EA FC 24, including Ultimate Team and Career Mode.",
+      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
     ],
-    "source": { "name": "сообщество", "url": "https://www.callofduty.com/blog" },
-    "publishedAt": "2026-06-24T12:00:00Z",
+    "source": {
+      "name": "charlieintel.com",
+      "url": "https://www.charlieintel.com/news/is-lamine-yamal-in-ea-fc-24-329278/"
+    },
+    "publishedAt": "2024-06-14T09:40:25.000Z",
     "likes": 0,
     "dislikes": 0
   },
   {
-    "id": "post-5",
-    "isDemo": true,
+    "id": "src-news-fortnite-players-desperate-for-amazing-healing-item-to-return-328945",
+    "isDemo": false,
     "pinned": false,
-    "category": "Патчноуты",
-    "title": "Демо: список исправлений мелких ошибок",
-    "excerpt": "Демо-материал. Короткое техническое обновление — пример того, как будет выглядеть малая новость в общей ленте.",
+    "category": "Новости",
+    "title": "Fortnite players desperate for “amazing” healing item to return",
+    "excerpt": "Fortnite Chapter 5 Season 3 added many elements and game mechanics, but players are still missing a great healing item.",
     "body": [
-      "Это демонстрационная статья-заглушка для проверки внешнего вида обычной (не закреплённой) карточки в ленте."
+      "Fortnite Chapter 5 Season 3 added many elements and game mechanics, but players are still missing a great healing item.",
+      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
     ],
-    "source": { "name": "callofduty.com", "url": "https://www.callofduty.com/blog" },
-    "publishedAt": "2026-06-23T09:00:00Z",
+    "source": {
+      "name": "charlieintel.com",
+      "url": "https://www.charlieintel.com/news/fortnite-players-desperate-for-amazing-healing-item-to-return-328945/"
+    },
+    "publishedAt": "2024-06-12T15:58:30.000Z",
+    "likes": 0,
+    "dislikes": 0
+  },
+  {
+    "id": "src-news-star-wars-outlaws-time-to-beat-328880",
+    "isDemo": false,
+    "pinned": false,
+    "category": "Новости",
+    "title": "Star Wars Outlaws time to beat: Main story & completionist run length",
+    "excerpt": "Here’s how long it takes to beat Star Wars Outlaws, whether you stick to the main story or complete everything.",
+    "body": [
+      "Here’s how long it takes to beat Star Wars Outlaws, whether you stick to the main story or complete everything.",
+      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
+    ],
+    "source": {
+      "name": "charlieintel.com",
+      "url": "https://www.charlieintel.com/news/star-wars-outlaws-time-to-beat-328880/"
+    },
+    "publishedAt": "2024-06-12T10:09:23.000Z",
+    "likes": 0,
+    "dislikes": 0
+  },
+  {
+    "id": "src-news-fortnite-30-10-update-patch-notes-328198",
+    "isDemo": false,
+    "pinned": false,
+    "category": "Новости",
+    "title": "Fortnite 30.10 update patch notes: Downtime, Metallica crossover & Tow Hook Cannon weapon",
+    "excerpt": "Here are the Fortnite 30.10 update patch notes, featuring the new Metallica crossover and Tow Hook Cannon weapon.",
+    "body": [
+      "Here are the Fortnite 30.10 update patch notes, featuring the new Metallica crossover and Tow Hook Cannon weapon.",
+      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
+    ],
+    "source": {
+      "name": "charlieintel.com",
+      "url": "https://www.charlieintel.com/news/fortnite-30-10-update-patch-notes-328198/"
+    },
+    "publishedAt": "2024-06-07T11:38:07.000Z",
+    "likes": 0,
+    "dislikes": 0
+  },
+  {
+    "id": "src-news-will-zenless-zone-zero-release-on-nintendo-switch-288861",
+    "isDemo": false,
+    "pinned": false,
+    "category": "Новости",
+    "title": "Is Zenless Zone Zero coming to Nintendo Switch?",
+    "excerpt": "Here’s everything you need to know about Zenless Zone Zero releasing on the Nintendo Switch at launch or at a later date.",
+    "body": [
+      "Here’s everything you need to know about Zenless Zone Zero releasing on the Nintendo Switch at launch or at a later date.",
+      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
+    ],
+    "source": {
+      "name": "charlieintel.com",
+      "url": "https://www.charlieintel.com/news/will-zenless-zone-zero-release-on-nintendo-switch-288861/"
+    },
+    "publishedAt": "2023-11-29T10:51:47.000Z",
     "likes": 0,
     "dislikes": 0
   }
