@@ -60,6 +60,17 @@ function formatTenure(startDateStr) {
   return parts.join(' ') + ' в игре';
 }
 
+// profile.name, profile.activisionId, profile.country и значения
+// favoriteModes — это свободный текстовый ввод из формы анкеты (profile.html)
+// или, для country, значение из <select> (но страна "Другая" тоже вводится
+// руками через #country-other). Сейчас анкета хранится только локально
+// (localStorage), поэтому атакующий через эти поля может заразить только
+// свой собственный браузер — но README прямо называет привязку анкеты к
+// общему backend'у естественным следующим шагом после входа через соцсети
+// (Этап 4), и как только это произойдёт, то же самое поле без экранирования
+// станет хранимым XSS, который увидят все посетители. Экранируем сразу,
+// пока это бесплатно, а не ждём следующего этапа, чтобы не чинить это
+// задним числом.
 function renderProfileCard(profile) {
   const slot = document.getElementById('profile-card-slot');
   const hasAnything = profile.name || profile.activisionId || profile.country || profile.startDate || profile.platform || profile.favoriteModes.length;
@@ -69,28 +80,35 @@ function renderProfileCard(profile) {
   }
 
   const tenure = formatTenure(profile.startDate);
+  const safeName = escapeHtml(profile.name);
+  const safeActivisionId = escapeHtml(profile.activisionId);
+  const safeCountry = escapeHtml(profile.country);
+  const safePlatform = escapeHtml(profile.platform);
+  const safeTelegramUsername = escapeHtml(profile.telegramUsername);
+  const safePhotoUrl = safeUrl(profile.photoUrl);
+
   const avatar = profile.photoUrl
-    ? `<img class="profile-avatar profile-avatar-photo" src="${profile.photoUrl}" alt="">`
-    : `<span class="profile-avatar">${(profile.name || 'Г').slice(0, 1).toUpperCase()}</span>`;
+    ? `<img class="profile-avatar profile-avatar-photo" src="${safePhotoUrl}" alt="">`
+    : `<span class="profile-avatar">${escapeHtml((profile.name || 'Г').slice(0, 1).toUpperCase())}</span>`;
 
   slot.innerHTML = `
     <div class="profile-card">
       <div class="profile-card-header">
         ${avatar}
         <div>
-          <div class="profile-name">${profile.name || 'Безымянный оператор'}</div>
-          ${profile.telegramUsername ? `<div class="profile-tag">@${profile.telegramUsername}</div>` : ''}
-          ${profile.activisionId ? `<div class="profile-tag">${profile.activisionId}</div>` : ''}
+          <div class="profile-name">${safeName || 'Безымянный оператор'}</div>
+          ${profile.telegramUsername ? `<div class="profile-tag">@${safeTelegramUsername}</div>` : ''}
+          ${profile.activisionId ? `<div class="profile-tag">${safeActivisionId}</div>` : ''}
         </div>
       </div>
       <div class="profile-meta-row">
-        ${profile.country ? `<span class="profile-meta-item">${profile.country}</span>` : ''}
-        ${profile.platform ? `<span class="profile-meta-item">${profile.platform}</span>` : ''}
-        ${tenure ? `<span class="profile-meta-item">${tenure}</span>` : ''}
+        ${profile.country ? `<span class="profile-meta-item">${safeCountry}</span>` : ''}
+        ${profile.platform ? `<span class="profile-meta-item">${safePlatform}</span>` : ''}
+        ${tenure ? `<span class="profile-meta-item">${escapeHtml(tenure)}</span>` : ''}
       </div>
       ${profile.favoriteModes.length ? `
         <div class="tag-row">
-          ${profile.favoriteModes.map(m => `<span class="tag-chip">${m}</span>`).join('')}
+          ${profile.favoriteModes.map(m => `<span class="tag-chip">${escapeHtml(m)}</span>`).join('')}
         </div>
       ` : ''}
     </div>

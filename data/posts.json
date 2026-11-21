@@ -1,286 +1,80 @@
 [
   {
-    "id": "src-news-marvel-rivals-december-19-update-patch-notes-winter-celebration-new-mode-more-338003",
-    "isDemo": false,
+    "id": "post-1",
+    "isDemo": true,
     "pinned": true,
-    "category": "Новости",
-    "title": "Marvel Rivals December 19 update patch notes: Winter Celebration, new mode, more",
-    "excerpt": "Here’s a full rundown of everything you need to know about the December 19 patch update of  Marvel Rivals for all platforms.",
+    "category": "Патчноуты",
+    "title": "Демо: разбор обновления текущего сезона",
+    "excerpt": "Демо-материал для разработки. Здесь появится короткий перевод официального патчноута: что добавили, что изменили в балансе оружия и режимов.",
     "body": [
-      "Here’s a full rundown of everything you need to know about the December 19 patch update of  Marvel Rivals for all platforms.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
+      "Это демонстрационная статья-заглушка, а не реальная новость.",
+      "После настройки автоматического пайплайна (Этап 2) сюда будут попадать переведённые на русский язык новости с официального блога Call of Duty — с коротким изложением и ссылкой на первоисточник.",
+      "Карточка статьи, лайки, дизлайки, комментарии и кнопки «поделиться» уже полностью работают — но видны только вам, в этом браузере, пока не подключён общий backend (Этап 3)."
     ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/marvel-rivals-december-19-update-patch-notes-winter-celebration-new-mode-more-338003/"
-    },
-    "publishedAt": "2024-12-19T09:33:12.000Z",
+    "source": { "name": "callofduty.com", "url": "https://www.callofduty.com/blog" },
+    "publishedAt": "2026-06-25T10:00:00Z",
     "likes": 0,
     "dislikes": 0
   },
   {
-    "id": "src-news-marvel-rivals-december-10-update-patch-notes-hero-fixes-map-tweaks-more-337701",
-    "isDemo": false,
+    "id": "post-2",
+    "isDemo": true,
     "pinned": true,
-    "category": "Новости",
-    "title": "Marvel Rivals December 10 update patch notes: Hero fixes, map tweaks, more",
-    "excerpt": "Marvel Rivals December 10 patch update is finally here and brings several map tweaks, hero bugfixes, crash fixes, and a lot more.",
+    "category": "Эспорт",
+    "title": "Демо: итоги турнирного дня в лиге Call of Duty",
+    "excerpt": "Демо-материал. Здесь будет короткий перевод официального отчёта о матчах с сайта Call of Duty League.",
     "body": [
-      "Marvel Rivals December 10 patch update is finally here and brings several map tweaks, hero bugfixes, crash fixes, and a lot more.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
+      "Это демонстрационная статья-заглушка.",
+      "Раздел «Эспорт» пока не входит в автоматический пайплайн Этапа 2 — сайт Call of Duty League технически устроен так, что требует более сложного способа сбора данных. Подробности — в README."
     ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/marvel-rivals-december-10-update-patch-notes-hero-fixes-map-tweaks-more-337701/"
-    },
-    "publishedAt": "2024-12-10T09:41:01.000Z",
+    "source": { "name": "callofdutyleague.com", "url": "https://callofdutyleague.com/en-us/news" },
+    "publishedAt": "2026-06-25T06:30:00Z",
     "likes": 0,
     "dislikes": 0
   },
   {
-    "id": "src-news-the-first-descendant-1-05-update-patch-notes-new-character-luna-ultimate-valby-peace-maker-weapon-334416",
-    "isDemo": false,
+    "id": "post-3",
+    "isDemo": true,
     "pinned": true,
-    "category": "Новости",
-    "title": "The First Descendant 1.05 update patch notes – New character Luna, Ultimate Valby & Peace Maker weapon",
-    "excerpt": "Here are the full patch notes for The First Descendant 1.05 update, which brings the new character Luna and a fresh Ultimate weapon.",
+    "category": "Скидки",
+    "title": "Демо: распродажа в магазине Call of Duty",
+    "excerpt": "Демо-материал. Здесь появится перевод анонса временной распродажи косметики и наборов.",
     "body": [
-      "Here are the full patch notes for The First Descendant 1.05 update, which brings the new character Luna and a fresh Ultimate weapon.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
+      "Это демонстрационная статья-заглушка для проверки вёрстки блока «Закреплено»."
     ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/the-first-descendant-1-05-update-patch-notes-new-character-luna-ultimate-valby-peace-maker-weapon-334416/"
-    },
-    "publishedAt": "2024-07-31T08:31:07.000Z",
+    "source": { "name": "callofduty.com", "url": "https://www.callofduty.com" },
+    "publishedAt": "2026-06-24T18:00:00Z",
     "likes": 0,
     "dislikes": 0
   },
   {
-    "id": "src-news-is-lamine-yamal-in-ea-fc-24-329278",
-    "isDemo": false,
+    "id": "post-4",
+    "isDemo": true,
     "pinned": false,
-    "category": "Новости",
-    "title": "Is Lamine Yamal in EA FC 24?",
-    "excerpt": "Here’s everything you need to know about whether Lamine Yamal is in EA FC 24, including Ultimate Team and Career Mode.",
+    "category": "Утечки",
+    "title": "Демо: неподтверждённая информация о будущем контенте",
+    "excerpt": "Демо-материал. Утечки всегда будут помечаться отдельной меткой достоверности, чтобы не путать слухи с официальными новостями.",
     "body": [
-      "Here’s everything you need to know about whether Lamine Yamal is in EA FC 24, including Ultimate Team and Career Mode.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
+      "Это демонстрационная статья-заглушка.",
+      "Официальные источники по определению не публикуют утечки — этот раздел предназначен для будущего, отдельного источника (например, проверенных сообществом постов), который не входит в автоматический пайплайн Этапа 2."
     ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/is-lamine-yamal-in-ea-fc-24-329278/"
-    },
-    "publishedAt": "2024-06-14T09:40:25.000Z",
+    "source": { "name": "сообщество", "url": "https://www.callofduty.com/blog" },
+    "publishedAt": "2026-06-24T12:00:00Z",
     "likes": 0,
     "dislikes": 0
   },
   {
-    "id": "src-news-fortnite-players-desperate-for-amazing-healing-item-to-return-328945",
-    "isDemo": false,
+    "id": "post-5",
+    "isDemo": true,
     "pinned": false,
-    "category": "Новости",
-    "title": "Fortnite players desperate for “amazing” healing item to return",
-    "excerpt": "Fortnite Chapter 5 Season 3 added many elements and game mechanics, but players are still missing a great healing item.",
+    "category": "Патчноуты",
+    "title": "Демо: список исправлений мелких ошибок",
+    "excerpt": "Демо-материал. Короткое техническое обновление — пример того, как будет выглядеть малая новость в общей ленте.",
     "body": [
-      "Fortnite Chapter 5 Season 3 added many elements and game mechanics, but players are still missing a great healing item.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
+      "Это демонстрационная статья-заглушка для проверки внешнего вида обычной (не закреплённой) карточки в ленте."
     ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/fortnite-players-desperate-for-amazing-healing-item-to-return-328945/"
-    },
-    "publishedAt": "2024-06-12T15:58:30.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-news-star-wars-outlaws-time-to-beat-328880",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "Star Wars Outlaws time to beat: Main story & completionist run length",
-    "excerpt": "Here’s how long it takes to beat Star Wars Outlaws, whether you stick to the main story or complete everything.",
-    "body": [
-      "Here’s how long it takes to beat Star Wars Outlaws, whether you stick to the main story or complete everything.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/star-wars-outlaws-time-to-beat-328880/"
-    },
-    "publishedAt": "2024-06-12T10:09:23.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-news-fortnite-30-10-update-patch-notes-328198",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "Fortnite 30.10 update patch notes: Downtime, Metallica crossover & Tow Hook Cannon weapon",
-    "excerpt": "Here are the Fortnite 30.10 update patch notes, featuring the new Metallica crossover and Tow Hook Cannon weapon.",
-    "body": [
-      "Here are the Fortnite 30.10 update patch notes, featuring the new Metallica crossover and Tow Hook Cannon weapon.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/fortnite-30-10-update-patch-notes-328198/"
-    },
-    "publishedAt": "2024-06-07T11:38:07.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-news-best-f1-24-abu-dhabi-gp-car-setup-to-dominate-yas-marina-circuit-327597",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "Best F1 24 Abu Dhabi GP car setup to dominate Yas Marina circuit",
-    "excerpt": "Here’s the best setup that you need to use for the fastest times around the Yas Marina circuit in the Abu Dhabi GP in F1 24.",
-    "body": [
-      "Here’s the best setup that you need to use for the fastest times around the Yas Marina circuit in the Abu Dhabi GP in F1 24.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/best-f1-24-abu-dhabi-gp-car-setup-to-dominate-yas-marina-circuit-327597/"
-    },
-    "publishedAt": "2024-06-04T15:00:58.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-news-best-uniques-in-diablo-4-weapon-gear-tier-list-323876",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "Best Uniques in Diablo 4: Weapon & gear tier list",
-    "excerpt": "Diablo 4 has a lot of Uniques but not all of them are useful, so here’s a tier list that will tell you the best one in the game.",
-    "body": [
-      "Diablo 4 has a lot of Uniques but not all of them are useful, so here’s a tier list that will tell you the best one in the game.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/best-uniques-in-diablo-4-weapon-gear-tier-list-323876/"
-    },
-    "publishedAt": "2024-05-13T16:04:30.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-news-how-to-get-use-wooden-parts-in-manor-lords-321780",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "How to get & use Wooden Parts in Manor Lords",
-    "excerpt": "Wooden Parts in Manor Lords can be quite important in the long run, so here’s how to get and use them in the game.",
-    "body": [
-      "Wooden Parts in Manor Lords can be quite important in the long run, so here’s how to get and use them in the game.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/how-to-get-use-wooden-parts-in-manor-lords-321780/"
-    },
-    "publishedAt": "2024-04-29T16:12:31.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-games-tekken-8-dlc-leaks-reveal-story-add-on-starring-jun-leo-302799",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "Tekken 8 DLC leaks reveal story add-on starring Jun & Leo",
-    "excerpt": "A recent Tekken 8 leak has uncovered hidden cutscenes and images that hint at the possibility of story DLC coming to the game in the future.",
-    "body": [
-      "A recent Tekken 8 leak has uncovered hidden cutscenes and images that hint at the possibility of story DLC coming to the game in the future.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/games/tekken-8-dlc-leaks-reveal-story-add-on-starring-jun-leo-302799/"
-    },
-    "publishedAt": "2024-02-07T12:40:19.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-news-all-blueberry-pokedex-rewards-in-pokemon-scarlet-violet-dlc-297375",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "All Blueberry Pokedex rewards in Pokemon Scarlet & Violet DLC",
-    "excerpt": "If you are looking for every Blueberry Pokedex reward in the Pokemon Scarlet and Violet DLC, here’s everything you should know.",
-    "body": [
-      "If you are looking for every Blueberry Pokedex reward in the Pokemon Scarlet and Violet DLC, here’s everything you should know.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/all-blueberry-pokedex-rewards-in-pokemon-scarlet-violet-dlc-297375/"
-    },
-    "publishedAt": "2024-01-15T20:10:23.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-valorant-valorant-players-long-for-popular-cs2-dota-2-feature-293909",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "Valorant players long for popular CS2 & DOTA 2 feature",
-    "excerpt": "Valorant fans want a popular feature from CS2 and DOTA 2, and leaks suggest that it’ll be a part of Valorant Mobile as well.",
-    "body": [
-      "Valorant fans want a popular feature from CS2 and DOTA 2, and leaks suggest that it’ll be a part of Valorant Mobile as well.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/valorant/valorant-players-long-for-popular-cs2-dota-2-feature-293909/"
-    },
-    "publishedAt": "2023-12-28T07:28:53.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-news-will-zenless-zone-zero-release-on-nintendo-switch-288861",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "Is Zenless Zone Zero coming to Nintendo Switch?",
-    "excerpt": "Here’s everything you need to know about Zenless Zone Zero releasing on the Nintendo Switch at launch or at a later date.",
-    "body": [
-      "Here’s everything you need to know about Zenless Zone Zero releasing on the Nintendo Switch at launch or at a later date.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/will-zenless-zone-zero-release-on-nintendo-switch-288861/"
-    },
-    "publishedAt": "2023-11-29T10:51:47.000Z",
-    "likes": 0,
-    "dislikes": 0
-  },
-  {
-    "id": "src-news-pokemon-scarlet-violet-players-terrified-as-creepy-teal-mask-trainer-haunts-paldea-285971",
-    "isDemo": false,
-    "pinned": false,
-    "category": "Новости",
-    "title": "Pokemon Scarlet & Violet players terrified as “creepy” Teal Mask trainer haunts Paldea",
-    "excerpt": "A Pokemon Scarlet and Violet player is repeatedly getting a “terrifying” Teal Mask glitch that has outright spooked fans.",
-    "body": [
-      "A Pokemon Scarlet and Violet player is repeatedly getting a “terrifying” Teal Mask glitch that has outright spooked fans.",
-      "Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже."
-    ],
-    "source": {
-      "name": "charlieintel.com",
-      "url": "https://www.charlieintel.com/news/pokemon-scarlet-violet-players-terrified-as-creepy-teal-mask-trainer-haunts-paldea-285971/"
-    },
-    "publishedAt": "2023-11-13T12:06:38.000Z",
+    "source": { "name": "callofduty.com", "url": "https://www.callofduty.com/blog" },
+    "publishedAt": "2026-06-23T09:00:00Z",
     "likes": 0,
     "dislikes": 0
   }

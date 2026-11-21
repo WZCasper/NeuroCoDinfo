@@ -22,6 +22,6 @@ const SITE_CONFIG = {
   // (Settings → API Keys в дашборде Supabase — подходит и «anon key», и
   // «publishable key», в зависимости от того, какой формат у вашего проекта).
   // Пока здесь стоят заглушки — сайт работает в локальном демо-режиме (localStorage).
-  supabaseUrl: 'https://ВАШ_ПРОЕКТ.supabase.co',
+  supabaseUrl: 'https://qmjkxvytrotpzhryyslc.supabase.co',
   supabaseAnonKey: 'sb_publishable_f2rqto6oH187C3G-aiGTCg_6o925cIb'
 };

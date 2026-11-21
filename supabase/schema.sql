@@ -18,6 +18,13 @@
 -- Это нормальное и осознанное ограничение анонимной системы — когда появится
 -- Этап 4 (вход через соцсети), voter_id нужно заменить на auth.uid(), а
 -- политики update/delete — на "using (voter_id = auth.uid()::text)".
+--
+-- ВАЖНО: этот файл НЕ пытается закрыть ограничение выше добавлением
+-- кастомного HTTP-заголовка (вида x-voter-id) и сверкой его с voter_id в
+-- строке — такая "защита" ничего не даёт, потому что оба значения задаёт
+-- один и тот же клиент: подделать можно сразу оба одинаково. Единственная
+-- настоящая защита здесь — голосующий, аутентифицированный через
+-- auth.uid() (Supabase Auth), что и есть Этап 4 из дорожной карты.
 
 create extension if not exists pgcrypto;
 
@@ -71,6 +78,40 @@ create table if not exists reactions (
 );
 
 create index if not exists reactions_target_idx on reactions (target_type, target_id);
+
+-- Та же идея, что и rate limit для комментариев выше (ограничение по
+-- voter_id, не по IP — симметрично уже принятому в проекте подходу), но
+-- короче по времени (1 секунда против 10): лайк — лёгкое, частое действие,
+-- и 10-секундный лимит заметно мешал бы обычному листанию ленты с быстрыми
+-- кликами по разным постам. До этой правки у reactions не было вообще
+-- никакой защиты от частоты запросов, в отличие от comments — это и есть
+-- исправляемая асимметрия: таблица без неё давала накручивать/обнулять
+-- счётчики без всякого ограничения.
+--
+-- Триггер висит только на "before insert", как и у comments: это лимитирует
+-- скорость появления НОВЫХ строк реакций (лайк нового поста этим же
+-- voter_id), но не трогает update (переключение like → dislike на уже
+-- существующей реакции — делает upsert) и не трогает delete (снятие
+-- реакции) — то есть обычное переключение лайка на одном и том же посте
+-- туда-обратно не задевается, задевается только частая накрутка по многим
+-- разным постам/комментариям подряд.
+create or replace function enforce_reaction_rate_limit() returns trigger as $$
+begin
+  if exists (
+    select 1 from reactions
+    where voter_id = new.voter_id
+      and created_at > now() - interval '1 second'
+  ) then
+    raise exception 'Слишком часто. Подождите немного перед следующей реакцией.';
+  end if;
+  return new;
+end;
+$$ language plpgsql;
+
+drop trigger if exists reactions_rate_limit on reactions;
+create trigger reactions_rate_limit
+  before insert on reactions
+  for each row execute function enforce_reaction_rate_limit();
 
 -- ===================== Права доступа (Row Level Security) =====================
 

@@ -222,9 +222,22 @@ async function getCandidateLinks() {
     .filter((item) => item.title);
 }
 
-// Возвращает и короткое описание статьи, и точную дату публикации —
-// обе вещи берутся с одной и той же загруженной страницы статьи, чтобы не
-// делать лишний повторный запрос только ради даты.
+// Возвращает короткое описание статьи, точную дату публикации и ссылку на
+// иллюстрацию — все три берутся с одной и той же загруженной страницы
+// статьи, чтобы не делать лишних повторных запросов.
+//
+// ПРО КАРТИНКУ: сохраняется только ссылка (image.url) на оригинал,
+// размещённый на сервере источника (charlieintel.com) — сама картинка НЕ
+// скачивается и не кладётся в этот репозиторий. Это намеренное решение:
+// у сайта нет своего сервера с хранилищем файлов, только статический
+// GitHub Pages. Браузер посетителя сам загрузит картинку напрямую с
+// charlieintel.com, когда отрисует страницу — наш GitHub Pages только
+// хранит текст (посты в data/posts.json) и ссылку, не сам файл.
+// og:image почти всегда указывает на реальные ширину/высоту картинки
+// (отсюда и og:image:width/height), поэтому они тоже сохраняются — это
+// позволит фронтенду задать атрибуты width/height у тега <img> заранее,
+// до её фактической загрузки, и тем самым избежать «прыжков» вёрстки
+// (CLS, Cumulative Layout Shift), пока картинка не отрисовалась.
 async function getArticleDetails(url) {
   try {
     const html = await fetchHtml(url);
@@ -240,10 +253,28 @@ async function getArticleDetails(url) {
       ? new Date(publishedTime).toISOString()
       : new Date().toISOString();
 
-    return { description: description.trim(), publishedAt };
+    // image остаётся null, если og:image отсутствует (бывает у очень старых
+    // статей) — это осознанно отличается от пустой строки: на фронтенде
+    // достаточно одной проверки `if (post.image)`, не задумываясь, может
+    // ли url внутри быть пустым. Запись пустого <img src=""> в HTML — это
+    // известный анти-паттерн: часть браузеров в такой ситуации повторно
+    // запрашивает текущую страницу, принимая пустой src за относительную
+    // ссылку "на саму себя".
+    const imageUrl = $('meta[property="og:image"]').attr('content');
+    const imageWidth = Number($('meta[property="og:image:width"]').attr('content'));
+    const imageHeight = Number($('meta[property="og:image:height"]').attr('content'));
+    const image = imageUrl
+      ? {
+          url: imageUrl,
+          width: Number.isFinite(imageWidth) && imageWidth > 0 ? imageWidth : null,
+          height: Number.isFinite(imageHeight) && imageHeight > 0 ? imageHeight : null
+        }
+      : null;
+
+    return { description: description.trim(), publishedAt, image };
   } catch (e) {
     console.error(`  не удалось получить данные статьи ${url}: ${e.message}`);
-    return { description: '', publishedAt: new Date().toISOString() };
+    return { description: '', publishedAt: new Date().toISOString(), image: null };
   }
 }
 
@@ -300,7 +331,7 @@ async function main() {
   const newPosts = [];
   for (const item of toProcess) {
     console.log('→', item.url);
-    const { description: rawDescription, publishedAt } = await getArticleDetails(item.url);
+    const { description: rawDescription, publishedAt, image } = await getArticleDetails(item.url);
     await sleep(REQUEST_DELAY_MS);
 
     const titleRu = await translateToRussian(item.title);
@@ -318,6 +349,11 @@ async function main() {
         'Это краткий автоматический перевод заголовка и описания статьи. Полный текст — по ссылке на первоисточник ниже.'
       ],
       source: { name: 'charlieintel.com', url: item.url },
+      // Ссылка на иллюстрацию с сайта-источника (не скачанный файл —
+      // см. подробное объяснение в комментарии к getArticleDetails выше).
+      // null, если у статьи нет og:image — фронтенд должен это проверять
+      // перед рендером <img>, а не полагаться на то, что image всегда есть.
+      image,
       publishedAt,
       likes: 0,
       dislikes: 0

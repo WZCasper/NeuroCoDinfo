@@ -21,6 +21,14 @@
   4. Подтверждённые данные сохраняются в localStorage и используются как
      устойчивая личность для анкеты, лайков и комментариев — подробности
      в js/supabase-client.js (см. getDeviceId) и README.
+
+  О ЗАЩИТЕ В ГЛУБИНУ НИЖЕ: user.firstName/photoUrl приходят от Edge Function
+  telegram-login ПОСЛЕ проверки HMAC-подписи Telegram, так что подделать их
+  произвольным HTML посторонний не может — это не тот же по тяжести риск,
+  что непроверенные комментарии в post.js. Но escapeHtml()/safeUrl() здесь
+  всё равно применены: это рендерится в хедере каждой страницы сайта, и
+  единообразие в обращении с любыми внешними данными дешевле, чем помнить,
+  какое конкретно место можно не защищать.
 */
 
 const TELEGRAM_USER_KEY = 'ncdi_telegram_user';
@@ -49,12 +57,15 @@ function renderAuthArea() {
   const user = getStoredTelegramUser();
 
   if (user) {
+    const safeFirstName = escapeHtml(user.firstName || 'Игрок');
+    const safePhotoUrl = safeUrl(user.photoUrl);
+    const safeInitial = escapeHtml((user.firstName || 'T').slice(0, 1).toUpperCase());
     area.innerHTML = `
       <div class="auth-chip">
         ${user.photoUrl
-          ? `<img class="auth-avatar" src="${user.photoUrl}" alt="">`
-          : `<span class="auth-avatar auth-avatar-fallback">${(user.firstName || 'T').slice(0, 1).toUpperCase()}</span>`}
-        <span class="auth-name">${user.firstName || 'Игрок'}</span>
+          ? `<img class="auth-avatar" src="${safePhotoUrl}" alt="">`
+          : `<span class="auth-avatar auth-avatar-fallback">${safeInitial}</span>`}
+        <span class="auth-name">${safeFirstName}</span>
         <button class="text-btn" id="auth-logout" type="button">Выйти</button>
       </div>
     `;

@@ -8,22 +8,46 @@ function getQueryId() {
 
 const postId = getQueryId();
 
+// post.category/title/body приходят из data/posts.json — внешний источник
+// (см. комментарий об этом в main.js), поэтому экранируются так же, как
+// пользовательский ввод ниже. post.source.url дополнительно проходит через
+// safeUrl(), так как это значение атрибута href, а не просто текст.
 async function renderArticle(post) {
   document.title = `${post.title} — NeuroCoDinfo`;
   const counts = await Store.getReactionCounts('post', post.id);
 
+  const safeCategory = escapeHtml(post.category);
+  const safeSourceUrl = safeUrl(post.source.url);
+  const safeSourceName = escapeHtml(post.source.name);
+  const safeTitle = escapeHtml(post.title);
+  const safeBody = post.body.map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+
+  // post.image отсутствует у демо-постов и равен null у реальных статей,
+  // для которых источник не указал og:image — тот же случай, что и в
+  // main.js, со всеми теми же причинами (см. подробный комментарий там).
+  // loading="eager" (а не "lazy", как на главной странице) — здесь картинка
+  // почти всегда видна сразу при открытии страницы статьи, откладывать её
+  // загрузку не нужно.
+  const imageHtml = post.image
+    ? `<img class="post-image" src="${safeUrl(post.image.url)}" alt=""
+            ${post.image.width ? `width="${post.image.width}"` : ''}
+            ${post.image.height ? `height="${post.image.height}"` : ''}
+            loading="eager" decoding="async">`
+    : '';
+
   document.getElementById('article-root').innerHTML = `
     <div class="post-meta">
-      <span class="card-category">${post.category}</span>
+      <span class="card-category">${safeCategory}</span>
       <span class="card-dot">·</span>
-      <a class="card-source" href="${post.source.url}" target="_blank" rel="noopener">${post.source.name}</a>
+      <a class="card-source" href="${safeSourceUrl}" target="_blank" rel="noopener">${safeSourceName}</a>
       <span class="card-dot">·</span>
       <span class="card-time">${timeAgo(post.publishedAt)}</span>
       <span class="card-dot">·</span>
       <span class="translated-tag">перевод RU</span>
     </div>
-    <h1 class="post-title">${post.title}</h1>
-    <div class="post-body">${post.body.map((p) => `<p>${p}</p>`).join('')}</div>
+    <h1 class="post-title">${safeTitle}</h1>
+    ${imageHtml}
+    <div class="post-body">${safeBody}</div>
     <div class="action-row">
       <button class="action-btn like-btn" data-reaction-target="post:${post.id}" aria-label="Нравится">${Icons.like}<span class="count">${counts.likes}</span></button>
       <button class="action-btn dislike-btn" data-reaction-target="post:${post.id}" aria-label="Не нравится">${Icons.dislike}<span class="count">${counts.dislikes}</span></button>
@@ -41,15 +65,24 @@ async function renderArticle(post) {
   document.getElementById('copy-text-btn').addEventListener('click', () => copyPostText(post));
 }
 
+// c.author и c.text — свободный пользовательский ввод из формы комментария
+// (post.html, #comment-composer) или формы ответа (replyFormTemplate ниже).
+// Без escapeHtml() здесь был хранимый XSS: любой посетитель мог вставить
+// <script>/<img onerror=...> в комментарий, и это выполнилось бы у каждого,
+// кто откроет статью при подключённом общем backend'е (Supabase). Это
+// самое важное место во всём проекте, где нужно экранирование.
 function commentTemplate(c, replies) {
+  const safeAuthor = escapeHtml(c.author);
+  const safeAuthorInitial = escapeHtml(c.author.slice(0, 1).toUpperCase());
+  const safeText = escapeHtml(c.text);
   return `
     <div class="comment" id="comment-${c.id}">
       <div class="comment-header">
-        <span class="comment-avatar">${c.author.slice(0, 1).toUpperCase()}</span>
-        <span class="comment-author">${c.author}</span>
+        <span class="comment-avatar">${safeAuthorInitial}</span>
+        <span class="comment-author">${safeAuthor}</span>
         <span class="comment-time">${timeAgo(c.createdAt)}</span>
       </div>
-      <p class="comment-body">${c.text}</p>
+      <p class="comment-body">${safeText}</p>
       <div class="comment-actions">
         <button class="action-btn like-btn" data-reaction-target="comment:${c.id}" aria-label="Нравится">${Icons.like}<span class="count">${c.likes || 0}</span></button>
         <button class="action-btn dislike-btn" data-reaction-target="comment:${c.id}" aria-label="Не нравится">${Icons.dislike}<span class="count">${c.dislikes || 0}</span></button>
